@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.screen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  padding: var(--horizontal-space);
+}
+
+.screen-header__title {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.screen-header__icons span {
+  margin-left: 25px;
+}

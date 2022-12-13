@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css2?family=pen+Sans:wght@400;600&display=swap");
+
+@import "../css/reset.css";
+@import "../css/variables.css";
+
+/* Components */
+@import "../css/components/status-bar.css";
+@import "../css/components/nav-bar.css";
+@import "../css/components/screen-header.css";
+@import "../css/components/user-component.css";
+
+/* Screens */
+@import "../css/screens/login.css";
+@import "../css/screens/signup.css";
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #2e363e;
+}
+
+.main-screen {
+  padding: 0px var(--horizontal-space);
+}
