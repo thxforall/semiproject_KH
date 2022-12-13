@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	let httpRequest;
+	
+	function getXMLHttpRequest() {
+		if(window.ActiveXObject) { // MS IE 6 이하
+			return new ActiveXObject("Msxml2.XMLHTTP");
+		} else if (window.XMLHttpRequest) {
+			return new XMLHttpRequest();
+		} else {
+			return null;
+		}
+	}
+	function result() {
+		if(httpRequest.readyState === 4) {
+			if(httpRequest.status === 200) {
+				alert(httpRequest.responseText);
+			} else {
+				alert(httpRequest.status);
+			}
+		}
+	}
+	function load(url) {
+		httpRequest = getXMLHttpRequest();
+		httpRequest.onreadystatechange = result; // call back 함수 assign
+		httpRequest.open("get",url,true) // aync
+		httpRequest.send();
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="sm" onclick="load('simple.txt')"/>
+	<input type="button" value="sm2" onclick="load('simple2.txt')"/>
+	<input type="button" value="sj" onclick="load('simple.jsp')"/>
+	<input type="button" value="sj2" onclick="load('simple2.jsp')"/>
+	
+</body>
+</html>

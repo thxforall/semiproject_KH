@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#btn').click(function() {
+			var sendData = 'name= ' + $('#name').val(); // 
+			// method 'post' 방식 전송
+			$.post('welcome.jsp',sendData, function(data) {
+				$('#msg').html(data);
+			});
+			return false; // submit btn 의 default action인 server로 데이터 전송하는 것을 막음
+		});
+	});
+</script>
+</head>
+<body>
+	<form action="">
+		이름 : <input type="text" name="name" id="name"/>
+		<input type="submit" value="확인" id="btn" />
+	</form>
+	<div id="msg">
+		
+	</div>
+</body>
+</html>

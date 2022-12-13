@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>XMLHTTPRequest synchronous EX</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// XMLHttpRequest object인 request 생성
+		const request = new XMLHttpRequest();
+		
+		// open {method : get,post,put..., path : web server path, url, async:true/false}
+		request.open("GET","data.html",false); // synchronous
+		
+		// send : ajax를 사용하여 server에 데이터 용청 시작
+		// web server가 response를 보내줄 때까지 프로그램이 정지된 상태로 있음
+		request.send();
+		
+		alert("Ajax Sychronous Test Success");
+		
+		// web server가 보내준 데이터를 web borwser의 XMLHttpRequest Object가 받아
+		// requset.responseText property로 보냄
+		// console.log(request.responseText);
+		document.body.innerHTML += request.responseText;
+		
+	</script>
+</body>
+</html>

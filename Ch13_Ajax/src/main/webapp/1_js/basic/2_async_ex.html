@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>XMLHTTPRequest asynchronous EX</title>
+</head>
+<body>
+	<script type="text/javascript">
+		const request = new XMLHttpRequest();
+		
+		// asynchronous를 사용하기 위해서는 callback 함수 등록
+		// -callback함수는 web server가 data를 보내주면 XMLHttpRequest객체가 callback 함수 실행
+		
+		// readystate :
+		// 0 (uninitialized) - (request가 초기화되지 않음)
+		// 1 (loading) - (서버와의 연결이 성사됨)
+		// 2 (loaded) - (서버가 request를 받음)
+		// 3 (interactive) - (request(요청)을 처리하는 중)
+		// 4 (complete) - (request에 대한 처리가 끝났으며 응답할 준비가 완료됨)
+		
+		request.onreadystatechange = function (event) {
+			if(request.readyState === 4) {
+				// response 객체의 status code (200 : 정상처리. 404,500..)
+				if(request.status === 200) {
+					document.body.innerHTML += request.responseText;			
+				}
+			}
+		};
+		
+		request.open("GET","data.html",true); // asynchronous
+		
+		request.send();
+		
+		// request.responseText에 데이터가 없는 이유는 server로 부터 데이터를 받지 못했기 때문
+		console.log(request.responseText);
+		
+		
+		
+	</script>
+</body>
+</html>
