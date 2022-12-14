@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" type="text/css"/>
-    <title>Sign Up</title>
+    <title>Edit Account Info</title>
   </head>
   <body>
     <div class="status-bar">
@@ -30,8 +30,8 @@
     </header>
 
     <form
-      action="../kokoa-clone-2022/friends.html"
-      method="get"
+      action="updateUser.do"
+      method="post"
       id="signup-form"
     >
       <label for="username">Username</label>
@@ -39,8 +39,7 @@
         name="username"
         id="username"
         type="email"
-        placeholder="@cheersup.com"
-        required
+        value="<%=user.getId() %>" readonly
       />
       <label for="password">Password</label>
       <input
@@ -59,7 +58,7 @@
         required
       />
       <label for="name">Name</label>
-      <input name="name" id="name" type="text" required />
+      <input name="name" id="name" type="text" value="<%=user.getName() %>" readonly />
       <label for="mobile-phone">Mobile Phone</label>
       <input
         name="mobie-phone"
@@ -69,15 +68,15 @@
         required
       />
       <label for="gender">Gender</label>
-      <select name="gender" id="gender" required>
+      <select name="gender" id="gender" value="<%=user.getGender()%>">
         <option value="">Gender</option>
         <option value="female">Female</option>
         <option value="male">Male</option>
         <option value="other">Other</option>
       </select>
       <label for="birthdate">Date Of Birth</label>
-      <input type="date" name="birthdate" id="birthdate" required />
-      <input type="submit" value="Sign Up" />
+      <input type="date" name="birthdate" id="birthdate" value="<%=user.getBirtDate()%>" />
+      <input type="submit" value="Edit Info" />
       <a href="#" onclick = "javascript:history.back();">Cancel</a>
     </form>
 

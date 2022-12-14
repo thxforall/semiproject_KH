@@ -30,6 +30,7 @@ pageEncoding="UTF-8"%>
 
     <div class="main-board">
       <div class="board">
+      <!-- 검색 시작 -->
         <div class="search-board">
           <form class="search-form" action="getBoardList.do" method="post">
             <table class="search-input">
@@ -46,6 +47,8 @@ pageEncoding="UTF-8"%>
             </table>
           </form>
         </div>
+        
+        <!-- 검색 결과 조회 테이블 -->
         <table class="board-table">
           <colgroup>
             <col />
@@ -61,22 +64,22 @@ pageEncoding="UTF-8"%>
             <th>Date</th>
             <th>Views</th>
           </thead>
-          <tbody>
-            <td>1</td>
-            <td>
-              <a href="#">안녕하세요</a>
-            </td>
-            <td>User</td>
-            <td>2022.12.14</td>
-            <td>0</td>
-          </tbody>
+		<c:forEach items="${boardList }" var="board">
+			<tbody>
+				<td>${board.seq }</td>
+				<td align="left"> <a href="getBoard.do?seq=${board.seq }">${board.title }</a> </td>
+				<td>${board.writer }</td>
+				<td>${board.regDate }</td>
+				<td>${board.cnt }</td>
+			</tbody>								
+		</c:forEach>
         </table>
       </div>
     </div>
 
     <div class="footer-nav">
-      <div><a href="#">Logout</a></div>
-      <button>New Cheer:s Up</button>
+      <div><a href="logout.do">Logout</a></div>
+      <button onclick="insertBoard.jsp">New Cheer:s Up</button>
     </div>
 
     <script

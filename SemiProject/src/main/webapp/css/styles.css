@@ -15,6 +15,7 @@
 @import "../css/screens/login.css";
 @import "../css/screens/signup.css";
 @import "../css/screens/getboardlst.css";
+@import "../css/screens/getboard.css";
 
 
 body {
@@ -25,3 +26,4 @@ body {
 .main-screen {
   padding: 0px var(--horizontal-space);
 }
+
