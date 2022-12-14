@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css" type="text/css"/>
     <title>Sign Up</title>
   </head>
   <body>
@@ -15,11 +15,11 @@
         <span>No Service</span>
         <i class="fa-solid fa-wifi"></i>
       </div>
-      <div class="status-bar__column">
-        <span>18:43</span>
+      <div class="status-bar__column time-box">
+        <span></span>
       </div>
       <div class="status-bar__column">
-        <span>110%</span>
+        <span>100%</span>
         <i class="fa-solid fa-battery-full fa-lg"></i>
         <i class="fa-solid fa-bolt-lightning"></i>
       </div>
@@ -78,13 +78,16 @@
       <label for="birthdate">Date Of Birth</label>
       <input type="date" name="birthdate" id="birthdate" required />
       <input type="submit" value="Sign Up" />
-      <a href="#">Cancle</a>
+      <a href="#" onclick = "javascript:history.back();">Cancel</a>
     </form>
 
     <script
       src="https://kit.fontawesome.com/4bf42f841a.js"
       crossorigin="anonymous"
     ></script>
+    
+    <!-- javascript -->
+    <script type="text/javascript" src="js/clock.js"></script>
   </body>
 </html>
 

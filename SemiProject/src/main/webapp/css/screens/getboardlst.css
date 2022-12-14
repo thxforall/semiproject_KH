@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+.main-header {
+  margin: 50px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-header__title {
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.main-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 24px;
+}
+
+.board {
+  width: 100%;
+}
+
+.board-table {
+  width: 100%;
+}
+
+.search-input {
+  text-align: right;
+  width: 100%;
+}
+
+.search-form input {
+  border: 1px solid #e0e1e1;
+  padding: 15px 0px;
+  font-size: 18px;
+  margin-bottom: 25px;
+  border-radius: 5px;
+}
+
+.search-form select {
+  border: 1px solid #e0e1e1;
+  padding: 15px 10px;
+  font-size: 18px;
+  margin-bottom: 25px;
+  border-radius: 5px;
+}
+
+.search-form input:focus {
+  border-color: var(--yellow);
+}
+
+.search-form input[type="submit"] {
+  background-color: var(--yellow);
+  cursor: pointer;
+  padding: 15px 20px;
+  border-radius: 5px;
+}
+
+.board-table thead {
+  border: 2px solid #e0e1e1;
+}
+
+.board-table th {
+  text-align: center;
+  padding: 15px;
+  background-color: var(--yellow);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.board-table td {
+  border: 2px solid #e0e1e1;
+  text-align: center;
+  padding: 15px 0px;
+  font-size: 1rem;
+}
+
+.board-table a:hover {
+  font-weight: bold;
+}
+
+colgroup :first-child {
+  width: 10%;
+}
+colgroup :nth-child(2) {
+  width: 50%;
+}
+colgroup :nth-child(4) {
+  width: 10%;
+}
+colgroup :nth-child(4) {
+  width: 20%;
+}
+colgroup :last-child {
+  width: 10%;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 20px 24px;
+}
+
+.footer-nav div:first-child {
+  margin-right: 15px;
+}
+
+.footer-nav div a {
+  text-align: center;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 1.2rem;
+  transition: text-decoration 1s ease-in-out, color ease-in-out;
+}
+
+.footer-nav div a:hover {
+  text-decoration: underline;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.footer-nav button {
+  background-color: var(--yellow);
+  cursor: pointer;
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  border: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.footer-nav button:hover {
+  transform: scale(1.1);
+}
