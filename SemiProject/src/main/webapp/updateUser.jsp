@@ -1,3 +1,4 @@
+<%@page import="user.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,9 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
     <title>Edit Account Info</title>
   </head>
   <body>
+ <% 
+  	UserVO user =  (UserVO) session.getAttribute("authUser");
+ %>  
     <div class="status-bar">
       <div class="status-bar__column">
         <span>No Service</span>
@@ -39,7 +44,7 @@
         name="username"
         id="username"
         type="email"
-        value="<%=user.getId() %>" readonly
+        value="<%=user.getUsername() %>" readonly
       />
       <label for="password">Password</label>
       <input
@@ -49,7 +54,9 @@
         placeholder="🔒"
         required
       />
-      <label for="password-confirm">password Comfirm</label>
+      <label for="password-confirm">Password Comfirm
+      <span class="hidden pw-red-text">Failed!✔</span>
+      </label>
       <input
         name="password-confirm"
         id="password-confirm"
@@ -59,13 +66,13 @@
       />
       <label for="name">Name</label>
       <input name="name" id="name" type="text" value="<%=user.getName() %>" readonly />
-      <label for="mobile-phone">Mobile Phone</label>
+      <label for="mobilephone">Mobile Phone</label>
       <input
-        name="mobie-phone"
-        id="mobie-phone"
+        name="mobilephone"
+        id="mobilephone"
         type="text"
         placeholder="📱"
-        required
+        value="<%=user.getMobilePhone() %>"
       />
       <label for="gender">Gender</label>
       <select name="gender" id="gender" value="<%=user.getGender()%>">
@@ -74,10 +81,8 @@
         <option value="male">Male</option>
         <option value="other">Other</option>
       </select>
-      <label for="birthdate">Date Of Birth</label>
-      <input type="date" name="birthdate" id="birthdate" value="<%=user.getBirtDate()%>" />
       <input type="submit" value="Edit Info" />
-      <a href="#" onclick = "javascript:history.back();">Cancel</a>
+      <a onclick = "javascript:history.back();">Cancel</a>
     </form>
 
     <script
@@ -88,15 +93,28 @@
     <!-- javascript -->
     <script type="text/javascript" src="js/clock.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-    	$("#frm").submit(function(){
-    		if($('input[name=password]').val() != $('input[name=password-confirm]').val()) {
-    			alert("비밀번호가 일치하지 않습니다");
-    			return false;
-    		}
-    		
-      	});
-    });
+$(document).ready(function(){
+	$("#signup-form").submit(function(){
+		if($('input[name=password]').val() != $('input[name=password-confirm]').val()) {
+			$('.pw-red-text').removeClass("hidden");
+			$('input[name=password-confirm]').css('border-color', "red");
+			var offset = $('.signup-header').offset();
+       		$('html').animate({scrollTop : offset.top}, 300);
+			return false;
+		}
+		
+  	});
+});
+	const selectGender = "<%=user.getGender()%>";
+	if(selectGender == "female") {
+		$('option[value=female]').attr('selected','selected')
+	} else if(selectGender == "male") {
+		$('option[value=male]').attr('selected','selected')
+		
+	} else if(selectGender == "other") {
+		$('option[value=other]').attr('selected','selected')
+	}
+	
 </script>
   </body>
 </html>

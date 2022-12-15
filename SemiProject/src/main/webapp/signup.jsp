@@ -1,3 +1,4 @@
+<%@page import="user.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,9 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
     <title>Sign Up</title>
   </head>
   <body>
+ <% 
+  	UserVO user =  (UserVO) session.getAttribute("authUser");
+ %>  
     <div class="status-bar">
       <div class="status-bar__column">
         <span>No Service</span>
@@ -30,11 +35,14 @@
     </header>
 
     <form
-      action="../kokoa-clone-2022/friends.html"
-      method="get"
+      action="insertUser.do"
+      method="post"
       id="signup-form"
     >
-      <label for="username">Username</label>
+      <label for="username">Username
+      <span class="hidden green-text">Checked!✔</span>
+      <span class="hidden red-text">Failed!✔</span>
+      </label>
       <input
         name="username"
         id="username"
@@ -42,6 +50,7 @@
         placeholder="@cheersup.com"
         required
       />
+      <input type="button" id="btn" value="중복 확인" />
       <label for="password">Password</label>
       <input
         name="password"
@@ -50,7 +59,9 @@
         placeholder="🔒"
         required
       />
-      <label for="password-confirm">password Comfirm</label>
+      <label for="password-confirm">Password Comfirm
+      	<span class="hidden pw-red-text">Failed!✔</span>
+      </label>
       <input
         name="password-confirm"
         id="password-confirm"
@@ -60,10 +71,10 @@
       />
       <label for="name">Name</label>
       <input name="name" id="name" type="text" required />
-      <label for="mobile-phone">Mobile Phone</label>
+      <label for="mobilephone">Mobile Phone</label>
       <input
-        name="mobie-phone"
-        id="mobie-phone"
+        name="mobilephone"
+        id="mobilephone"	
         type="text"
         placeholder="📱"
         required
@@ -78,26 +89,66 @@
       <label for="birthdate">Date Of Birth</label>
       <input type="date" name="birthdate" id="birthdate" required />
       <input type="submit" value="Sign Up" />
-      <a href="#" onclick = "javascript:history.back();">Cancel</a>
+      <a onclick = "index.jsp">Cancel</a>
     </form>
-
+    <input type="hidden" name="idChk" value="invalid" />
     <script
       src="https://kit.fontawesome.com/4bf42f841a.js"
       crossorigin="anonymous"
     ></script>
     
-    <!-- javascript -->
+    <!-- java script -->
     <script type="text/javascript" src="js/clock.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-    	$("#frm").submit(function(){
-    		if($('input[name=password]').val() != $('input[name=password-confirm]').val()) {
-    			alert("비밀번호가 일치하지 않습니다");
-    			return false;
-    		}
-    		
-      	});
-    });
+	<script type="text/javascript">
+
+$(document).ready(function(){
+	$("#signup-form").submit(function(){
+		if($('input[name=password]').val() != $('input[name=password-confirm]').val()) {
+			$('.pw-red-text').removeClass("hidden");
+			$('input[name=password-confirm]').css('border-color', "red");
+			var offset = $('.signup-header').offset();
+       		$('html').animate({scrollTop : offset.top}, 300);
+			return false;
+		}
+		
+  	});
+});
+
+$(document).ready(function(){
+	$("#signup-form").submit(function(){
+		if ($('input[name=idChk]').val() === 'invalid') {
+			$('.red-text').removeClass("hidden");
+			$('input[name=username]').css('border-color', "red");
+			var offset = $('.signup-header').offset();
+       		$('html').animate({scrollTop : offset.top}, 300);
+			return false;
+		}
+  	});
+	
+
+	$("#btn").click(function() {
+		var url = "checkID.do?username="+$('input[name=username]').val();
+		$('.red-text').addClass("hidden");
+		$('.green-text').addClass("hidden");
+	$.getJSON(url, function(data) {
+			if (data.username === $('input[name=username]').val()) {
+				$('.red-text').removeClass("hidden");
+				$('input[name=username]').css('border-color', "red");
+				$('input[name=idChk]').val("invalid");
+			} else if ($('input[name=username]').val() == "") {
+				$('.red-text').removeClass("hidden");
+				$('input[name=username]').css('border-color', "red");
+				$('input[name=idChk]').val("invalid");
+			}
+			 else {
+				$('input[name=username]').css('border-color', "green");
+				$('.green-text').removeClass("hidden");
+				$('input[name=idChk]').val("valid");
+			 }
+		});
+	});
+	
+});
 </script>
   </body>
 </html>

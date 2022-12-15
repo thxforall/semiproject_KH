@@ -70,6 +70,7 @@
   color: rgba(0, 0, 0, 0.6);
   font-size: 15px;
   transition: text-decoration 1s ease-in-out, color ease-in-out;
+  cursor: pointer;
 }
 
 #signup-form a:hover {
@@ -78,5 +79,24 @@
 }
 
 label {
+  display:flex;
+  justify-content: space-between;
+  align-items : center;
   margin: 10px 0px;
+}
+
+.green-text {
+	color:green;
+}
+
+.red-text {
+	color:red;
+}
+
+.pw-red-text {
+	color:red;
+}
+
+.hidden {
+  display:none;
 }

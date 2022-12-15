@@ -1,6 +1,8 @@
 package user.controller;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,29 +23,29 @@ public class InsertUser extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 사용자 입력정보 추출
 		request.setCharacterEncoding("utf-8");
-		String id = request.getParameter("id");
+		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String role = request.getParameter("role");
-		String tel = request.getParameter("tel");
+		String mobilePhone = request.getParameter("mobilephone");
+		String gender = request.getParameter("gender");
+		String birthDate = request.getParameter("birthdate");
 		
 		
 		
 		// 2.DB 연동
 		UserVO vo = new UserVO();
-		vo.setId(id);
+		vo.setUsername(username);
 		vo.setPassword(password);
 		vo.setName(name);
-		vo.setEmail(email);
-		vo.setRole(role);
-		vo.setTel(tel);
+		vo.setBirthDate(birthDate);
+		vo.setGender(gender);
+		vo.setMobilePhone(mobilePhone);
 		
 		
 		UserDAO userDAO = new UserDAO();
 		userDAO.insertUser(vo); // insert sql 문 작성
 		
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("index.jsp");
 		
 		
 	}

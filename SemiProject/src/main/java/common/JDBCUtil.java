@@ -13,7 +13,7 @@ public class JDBCUtil {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
 			return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", 
-													"madang", "madang");
+													"bky", "3562");
 		} catch (Exception e) {
 			System.out.println("Connection Error");
 		}

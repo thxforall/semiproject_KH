@@ -1,3 +1,5 @@
+<%@page import="user.model.UserVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,9 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
     <title>Welcome to Cheer:s Up🍻</title>
   </head>
   <body>
+ <% 
+  	UserVO user =  (UserVO) session.getAttribute("authUser");
+ %>  
     <div class="status-bar">
       <div class="status-bar__column">
         <span>No Service</span>
@@ -33,7 +39,7 @@
     </header>
 
     <form
-      action="getBoardList.jsp"
+      action="login.do"
       method="get"
       id="login-form"
     >

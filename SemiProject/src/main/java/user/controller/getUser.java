@@ -20,10 +20,10 @@ public class getUser extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
+		String username = request.getParameter("usernmae");
 		
 		UserVO vo = new UserVO();
-		vo.setId(id);
+		vo.setUsername(username);
 		UserDAO userDAO = new UserDAO();
 		UserVO user = userDAO.getUser(vo);
 		

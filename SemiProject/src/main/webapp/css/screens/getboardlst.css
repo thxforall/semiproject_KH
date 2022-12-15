@@ -101,13 +101,24 @@ colgroup :last-child {
 
 .footer-nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   margin: 20px 24px;
 }
 
-.footer-nav div:first-child {
+.footer-nav div:nth-child(2) {
   margin-right: 15px;
+}
+
+.footer-nav div:first-child button{
+  opacity: 0.4;
+  color:rgba(0, 0, 0, 0.4);
+  transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.footer-nav div:first-child button:hover{
+  opacity: 0.9;
+  color:rgba(0, 0, 0, 0.9);
 }
 
 .footer-nav div a {
@@ -116,6 +127,7 @@ colgroup :last-child {
   color: rgba(0, 0, 0, 0.4);
   font-size: 1.2rem;
   transition: text-decoration 1s ease-in-out, color ease-in-out;
+  cursor: pointer;
 }
 
 .footer-nav div a:hover {
@@ -134,5 +146,5 @@ colgroup :last-child {
 }
 
 .footer-nav button:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }

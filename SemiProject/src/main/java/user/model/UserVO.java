@@ -1,71 +1,61 @@
 package user.model;
 
+import java.util.Date;
+
 public class UserVO {
-	private String id;
+	private String username;
 	private String password;
 	private String name;
-	private String email;
-	private String tel;
-	private String role;
+	private String mobilePhone;
+	private String gender;
+	private String birthDate;
 	
-
 	public UserVO() {
-
 	}
-
-	public String getId() {
-		return id;
+	
+	public String getUsername() {
+		return username;
 	}
-
-	public void setId(String id) {
-		this.id = id;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getRole() {
-		return role;
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	
+	public String getBirthDate() {
+		return birthDate;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getTel() {
-		return tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	@Override
 	public String toString() {
-		return "UserVO [id=" + id + ", password=" + password + ", name=" + name + ", email=" + email + ", tel=" + tel
-				+ ", role=" + role + "]";
+		return "UserVO [username=" + username + ", password=" + password + ", name=" + name + ", mobilePhone="
+				+ mobilePhone + ", gender=" + gender + ", birthDate=" + birthDate + "]";
 	}
-
 	
 }

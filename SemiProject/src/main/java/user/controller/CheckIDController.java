@@ -25,23 +25,23 @@ public class CheckIDController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 사용자 입력 정보 추출
-		String id = request.getParameter("id");
+		String username = request.getParameter("username");
 		
 		// 2. DB 연동 처리
 		UserVO vo = new UserVO();
-		vo.setId(id);
+		vo.setUsername(username);
 		
 		UserDAO userDAO = new UserDAO();
-		String newId = userDAO.existUserId(vo);
+		String newUsername = userDAO.existUsername(vo);
 		
-		JSONObject idJson = new JSONObject();
-		idJson.put("id", newId);
+		JSONObject usernameJson = new JSONObject();
+		usernameJson.put("username", newUsername);
 		response.setContentType("application/json");
 		
 		// {"id" : "1111"}
-		System.out.println(idJson);
+		System.out.println(usernameJson);
 		PrintWriter out = response.getWriter();
-		out.print(idJson);
+		out.print(usernameJson);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

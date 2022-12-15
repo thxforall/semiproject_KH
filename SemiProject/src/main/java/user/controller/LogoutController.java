@@ -23,7 +23,7 @@ public class LogoutController extends HttpServlet {
 		session.invalidate();
 
 		// 2. Session 종료 후 login 화면으로 이동
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("index.jsp");
 
 	}
 

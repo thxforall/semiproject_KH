@@ -21,25 +21,23 @@ public class updateUser extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 사용자 입력정보 추출
 		request.setCharacterEncoding("utf-8");
-		String id = request.getParameter("id");
+		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String email = request.getParameter("email");
-		String tel = request.getParameter("tel");
-		String role = request.getParameter("role");
+		String mobilephone = request.getParameter("mobilephone");
+		String gender = request.getParameter("gender");
 		
 		
 		// DB연동
 		UserVO vo = new UserVO();
+		vo.setUsername(username);
 		vo.setPassword(password);
-		vo.setEmail(email);
-		vo.setTel(tel);
-		vo.setRole(role);
-		vo.setId(id);
+		vo.setMobilePhone(mobilephone);;
+		vo.setGender(gender);
 		
 		UserDAO userDAO = new UserDAO();
 		userDAO.updateUser(vo);
 		
-		response.sendRedirect("main.jsp");
+		response.sendRedirect("index.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

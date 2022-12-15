@@ -33,7 +33,7 @@ public class LoginCheckFilter implements Filter {
 		
 		if (session == null || session.getAttribute("authUser") == null) {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
-			httpResponse.sendRedirect(httpRequest.getContextPath() + "/login.jsp");
+			httpResponse.sendRedirect(httpRequest.getContextPath() + "/index.jsp");
 		} else {
 			chain.doFilter(request, response);
 		}

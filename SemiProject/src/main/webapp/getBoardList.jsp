@@ -1,5 +1,11 @@
+<%@page import="user.model.impl.UserDAO"%>
+<%@page import="user.model.UserVO"%>
+<%@page import="java.util.List"%>
+<%@page import="board.model.impl.BoardDAO"%>
+<%@page import="board.model.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,9 +13,13 @@ pageEncoding="UTF-8"%>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
     <title>Cheer:s Up🍻</title>
   </head>
   <body>
+ <% 
+  	UserVO user =  (UserVO) session.getAttribute("authUser"); 
+ %>   
     <div class="status-bar">
       <div class="status-bar__column">
         <span>No Service</span>
@@ -67,7 +77,7 @@ pageEncoding="UTF-8"%>
 		<c:forEach items="${boardList }" var="board">
 			<tbody>
 				<td>${board.seq }</td>
-				<td align="left"> <a href="getBoard.do?seq=${board.seq }">${board.title }</a> </td>
+				<td> <a href="getBoard.do?seq=${board.seq }">${board.title }</a> </td>
 				<td>${board.writer }</td>
 				<td>${board.regDate }</td>
 				<td>${board.cnt }</td>
@@ -78,8 +88,9 @@ pageEncoding="UTF-8"%>
     </div>
 
     <div class="footer-nav">
+      <div><button onclick="location.href='updateUser.jsp?username=<%=user.getUsername() %>'">Edit Account</button></div>
       <div><a href="logout.do">Logout</a></div>
-      <button onclick="insertBoard.jsp">New Cheer:s Up</button>
+      <div><button onclick="location.href='insertBoard.jsp?username=<%=user.getUsername()%>'">New Cheer:s Up</button></div>
     </div>
 
     <script

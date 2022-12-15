@@ -21,12 +21,12 @@ public class LoginController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 사용자 입력 정보 추출
-		String id = request.getParameter("id");
+		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
 		// 2. DB 연동 처리
 		UserVO vo = new UserVO();
-		vo.setId(id);
+		vo.setUsername(username);
 		vo.setPassword(password);
 		
 		UserDAO userDAO = new UserDAO();
@@ -37,9 +37,9 @@ public class LoginController extends HttpServlet {
 		// 3. 화면 navigation
 		if (user != null) {
 			session.setAttribute("authUser", user);
-			response.sendRedirect("main.jsp");
+			response.sendRedirect("getBoardList.do");
 		} else {
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("index.jsp");
 		}
 
 	}

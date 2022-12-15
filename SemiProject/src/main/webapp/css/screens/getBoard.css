@@ -3,7 +3,7 @@
 
 .getboard-main {
   display: flex;
-  justify-content: center;
+  justify-content:center;
   align-items: center;
   width: 100%;
   margin-bottom: 16px;
@@ -85,9 +85,12 @@ form {
 }
 .getboard-content textarea {
   width: 800px;
+  height:168px;
   border-radius: 5px;
   border: 1px solid #e0e1e1;
   resize: none;
+  text-align:left;
+  font-size:20px;
 }
 
 .getboard-content span {
@@ -188,6 +191,7 @@ form {
   color: rgba(0, 0, 0, 0.4);
   font-size: 15px;
   transition: text-decoration 1s ease-in-out, color ease-in-out;
+  cursor: pointer;
 }
 
 .board-footer-nav a:hover {
